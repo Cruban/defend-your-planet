@@ -46,5 +46,23 @@ describe("Game Interaction", () => {
       // Ensure that the final score is greater than the initial score.
       expect(finalScore).to.be.greaterThan(initialScore);
     });
+
+    describe("Game Over Conditions", () => {
+      it("Should display Game Over screen", () => {
+        // Step 1: Open the game webpage.
+        cy.visit("/");
+
+        // Step 2: Enter the correct password in the authentication prompt.
+        cy.get("#passwordInput").type("your_correct_password"); // Replace 'your_correct_password' with the actual correct password.
+
+        // Step 3: Confirm that the game starts.
+        cy.get("#submitButton").click(); // Replace '#submitButton' with the actual identifier of the submit button.
+
+        // Step 5: Play the game to reach winning score or lose all lives.
+
+        // Step 6: Check if the game over screen is displayed.
+        cy.get("#canvas1").should("not.exist"); // Replace '#canvas1' with the actual identifier of the game canvas.
+      });
+    });
   });
 });
